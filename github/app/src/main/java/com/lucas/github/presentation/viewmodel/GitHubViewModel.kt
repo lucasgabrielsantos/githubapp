@@ -40,7 +40,7 @@ class GitHubViewModel(
     private val _event: MutableSharedFlow<GitHubEvent> = MutableSharedFlow()
     val event = _event.asSharedFlow()
 
-    private fun getListGitHub() {
+    fun getListGitHub() {
         viewModelScope.launch {
             useCase.getListGitHubRepositories(LANGUAGE_QUERY, SORT_ORDER, FIRST_PAGE_INDEX)
                 .onStart { _uiState.update { it.copy(isLoading = true) } }
@@ -52,7 +52,7 @@ class GitHubViewModel(
         }
     }
 
-    private fun showError() {
-
+    private fun onClickRepository() {
+       // event.collect()  }
     }
 }

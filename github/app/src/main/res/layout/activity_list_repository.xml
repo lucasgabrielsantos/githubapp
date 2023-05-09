@@ -38,7 +38,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcRepositories"
+            android:id="@+id/rvRepositories"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_0"
             android:visibility="visible"

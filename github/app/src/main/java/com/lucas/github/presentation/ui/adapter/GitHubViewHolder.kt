@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lucas.github.R
 import com.lucas.github.domain.model.GitHub
+import com.lucas.github.domain.model.ItemsEntity
 
 class GitHubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(data: GitHub, click: (GitHub) -> Unit) {
+    fun bind(data: ItemsEntity) {
         with(itemView) {
 
         }
