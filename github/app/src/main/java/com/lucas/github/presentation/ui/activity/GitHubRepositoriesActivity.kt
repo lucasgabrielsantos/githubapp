@@ -1,4 +1,4 @@
-package com.lucas.github.presentation.ui.fragments
+package com.lucas.github.presentation.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -50,7 +50,6 @@ class GitHubRepositoriesActivity : AppCompatActivity() {
         handleStates()
         handleEffects()
     }
-
 
     private fun handleStates() {
         viewModel.viewModelScope.launch {

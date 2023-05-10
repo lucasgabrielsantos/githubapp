@@ -28,7 +28,7 @@ class GitHubDataSourceImpl(private val api: GitHubApi) : GitHubDataSource {
         page = page
     )
 
-    private fun toDomainList(items: List<Items>): List<ItemsEntity> {
+    private fun toDomainList(items: List<Items>): MutableList<ItemsEntity> {
         val itemsEntities = mutableListOf<ItemsEntity>()
         items.forEach {
             itemsEntities.add(

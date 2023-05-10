@@ -1,19 +1,28 @@
 package com.lucas.github.data.remote.service
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Client {
-        companion object {
-            private const val BASE_URL = "https://api.github.com/"
-        }
-
-        private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+object Client {
+    private val gson: Gson by lazy { GsonBuilder().setLenient().create() }
+    private fun okHttp(): OkHttpClient {
+        return OkHttpClient.Builder()
             .build()
-
-        fun getService(): GitHubApi {
-            return retrofit.create(GitHubApi::class.java)
-        }
     }
+
+    private fun retrofit(url: String): Retrofit = Retrofit.Builder()
+        .baseUrl(url)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .client(okHttp())
+        .build()
+
+    fun getService(url: String): GitHubApi = retrofit(url = url).create(GitHubApi::class.java)
+
+
+//    inline fun <reified T> service(url: String): T = retrofit(url).create(
+//        T::class.java
+//    )
+}
