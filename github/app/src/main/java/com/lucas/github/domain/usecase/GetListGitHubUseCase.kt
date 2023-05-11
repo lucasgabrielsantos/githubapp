@@ -7,8 +7,10 @@ import kotlinx.coroutines.flow.Flow
 class GetListGitHubUseCase(private val repository: GitHubRepository) {
 
     fun getListGitHubRepositories(
-        query: String, sort: String, page: String
+        query: String,
+        page: Int,
+        sort: String
     ): Flow<GitHub> {
-        return repository.getListGitHubRepositories(query, sort, page)
+        return repository.getListGitHubRepositories(query, page, sort)
     }
 }

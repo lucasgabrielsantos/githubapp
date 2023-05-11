@@ -3,17 +3,19 @@ package com.lucas.github.presentation.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lucas.github.databinding.ActivityListRepositoryBinding
+import com.lucas.github.domain.model.GitHub
+import com.lucas.github.domain.model.ItemsEntity
 import com.lucas.github.presentation.ui.adapter.GitHubAdapter
 import com.lucas.github.presentation.viewmodel.GitHubEvent.*
 import com.lucas.github.presentation.viewmodel.GitHubViewModel
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class GitHubRepositoriesActivity : AppCompatActivity() {
@@ -22,8 +24,7 @@ class GitHubRepositoriesActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: GitHubAdapter
 
-    private val viewModel: GitHubViewModel by viewModels()
-
+    private val viewModel: GitHubViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListRepositoryBinding.inflate(layoutInflater)

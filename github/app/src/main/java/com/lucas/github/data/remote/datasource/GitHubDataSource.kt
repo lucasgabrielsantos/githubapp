@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GitHubDataSource {
 
-    fun getListGitHubPopular(query: String, sort: String, order: String): Flow<GitHub>
+    fun getListGitHubPopular(query: String, page: Int, order: String): Flow<GitHub>
 }

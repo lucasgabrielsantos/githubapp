@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lucas.github.domain.usecase.GetListGitHubUseCase
 import com.lucas.github.presentation.viewmodel.GitHubEvent
+import com.lucas.github.presentation.viewmodel.GitHubEvent.ShowGenericError
 import com.lucas.github.presentation.viewmodel.GitHubState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -19,18 +20,16 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-private const val FIRST_PAGE_INDEX = "1"
-private const val LANGUAGE_QUERY = "language=java"
-private const val SORT_ORDER = "start"
+private const val FIRST_PAGE_INDEX = 1
+private const val LANGUAGE_QUERY = "Java"
+private const val SORT_ORDER = "starts"
+
+////https://api.github.com/search/repositories?q=language:Java&sort=stars&
 
 class GitHubViewModel(
     private val useCase: GetListGitHubUseCase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val dispatcher: CoroutineDispatcher,
 ) : ViewModel() {
-
-    init {
-        getListGitHub()
-    }
 
     private val initialState: GitHubState by lazy { GitHubState().initialState(initialState = true) }
 
@@ -42,9 +41,10 @@ class GitHubViewModel(
 
     fun getListGitHub() {
         viewModelScope.launch {
-            useCase.getListGitHubRepositories(LANGUAGE_QUERY, SORT_ORDER, FIRST_PAGE_INDEX)
-                .onStart { _uiState.update { it.copy(isLoading = true) } }
-                .catch { _uiState.update { it.copy() } }.flowOn(dispatcher)
+            useCase.getListGitHubRepositories(LANGUAGE_QUERY, FIRST_PAGE_INDEX, SORT_ORDER)
+                .onStart { _uiState.update { it.copy(isLoading = false) } }
+                .catch { _event.emit(ShowGenericError) }
+                .flowOn(dispatcher)
                 .onCompletion { _uiState.update { it.copy(isLoading = false) } }
                 .collect { response ->
                     _uiState.update { it.showListGitHub(response) }

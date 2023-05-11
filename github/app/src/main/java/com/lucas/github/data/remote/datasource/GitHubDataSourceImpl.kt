@@ -14,14 +14,14 @@ class GitHubDataSourceImpl(private val api: GitHubApi) : GitHubDataSource {
 
     override fun getListGitHubPopular(
         query: String,
-        sort: String,
+        page: Int,
         order: String
     ): Flow<GitHub> = flow {
-        emit(api.searchRepositories(query, sort, order).toDomain())
+        emit(api.searchRepositories(query, page, order).toDomain())
     }
 
 
-    fun GitHubResponse.toDomain() = GitHub(
+    private fun GitHubResponse.toDomain() = GitHub(
         totalCount = totalCount,
         incompleteResults = incompleteResults,
         itemsEntity = toDomainList(items),

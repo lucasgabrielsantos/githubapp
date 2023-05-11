@@ -9,6 +9,7 @@ import com.lucas.github.data.remote.service.GitHubApi
 import com.lucas.github.domain.model.repository.GitHubRepository
 import com.lucas.github.domain.usecase.GetListGitHubUseCase
 import com.lucas.github.presentation.viewmodel.GitHubViewModel
+import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -47,7 +48,8 @@ object GitHubModule {
         val uiModule = module {
             viewModel {
                 GitHubViewModel(
-                    useCase = get(), dispatcher = get()
+                    useCase = get(),
+                    dispatcher = Dispatchers.IO
                 )
             }
         }
