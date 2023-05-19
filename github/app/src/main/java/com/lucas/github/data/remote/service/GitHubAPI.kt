@@ -10,7 +10,6 @@ interface GitHubApi {
     suspend fun searchRepositories(
         @Query("q") query: String,
         @Query("sort") sort: String,
-        @Query("page") page: Int
     ): GitHubResponse
 
     // @GET("repos/{owner}/{repository}/pulls")

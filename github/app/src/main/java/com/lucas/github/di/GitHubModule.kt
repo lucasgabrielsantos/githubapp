@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-const val BASE_URL = "https://www.breakingbadapi.com/api/"
+const val BASE_URL = "https://api.github.com/search/repositories/"
 
 object GitHubModule {
 

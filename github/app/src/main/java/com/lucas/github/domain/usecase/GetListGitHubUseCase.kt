@@ -12,6 +12,6 @@ private const val FIRST_PAGE_INDEX = 1
 class GetListGitHubUseCase(private val repository: GitHubRepository) {
 
     fun getListGitHubRepositories(): Flow<GitHub> {
-        return repository.getListGitHubRepositories(LANGUAGE_QUERY, SORT_ORDER, FIRST_PAGE_INDEX)
+        return repository.getListGitHubRepositories(LANGUAGE_QUERY, SORT_ORDER)
     }
 }

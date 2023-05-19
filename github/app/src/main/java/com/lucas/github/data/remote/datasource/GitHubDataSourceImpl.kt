@@ -11,16 +11,15 @@ import kotlinx.coroutines.flow.flow
 
 class GitHubDataSourceImpl(private val api: GitHubApi) : GitHubDataSource {
 
-    override fun getListGitHubPopular(query: String, order: String, page: Int): Flow<GitHub> =
+    override fun getListGitHubPopular(query: String, order: String): Flow<GitHub> =
         flow {
-            emit(api.searchRepositories(query, order, page).toDomain())
+            emit(api.searchRepositories(query, order).toDomain())
         }
 
     private fun GitHubResponse.toDomain() = GitHub(
         totalCount = totalCount,
         incompleteResults = incompleteResults,
-        itemsEntity = toDomainList(items),
-        page = page
+        itemsEntity = toDomainList(items)
     )
 
     private fun toDomainList(items: List<Items>): MutableList<ItemsEntity> {
