@@ -9,10 +9,9 @@ class GitHubRepositoryImpl(val datasource: GitHubDataSource) : GitHubRepository 
 
     override fun getListGitHubRepositories(
         query: String,
-        page: Int,
-        sort: String
+        sort: String,
+        page: Int
     ): Flow<GitHub> {
-        return datasource.getListGitHubPopular(query, page, sort)
+        return datasource.getListGitHubPopular(query, sort, page)
     }
-
 }

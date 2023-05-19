@@ -4,18 +4,13 @@ import com.lucas.github.data.remote.model.GitHubResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
-private const val LANGUAGE_QUERY = "language=java"
-private const val SORT_ORDER = "stars"
-private const val FIRST_PAGE_INDEX = "1"
-
 interface GitHubApi {
 
     @GET("search/repositories")
     suspend fun searchRepositories(
         @Query("q") query: String,
-        @Query("page") page: Int,
-        @Query("sort") sort: String
+        @Query("sort") sort: String,
+        @Query("page") page: Int
     ): GitHubResponse
 
     // @GET("repos/{owner}/{repository}/pulls")

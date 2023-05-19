@@ -8,9 +8,11 @@ data class GitHubState(
 ) {
 
     fun showListGitHub(gitHub: GitHub) = GitHubState(
-        showListGitHub = gitHub)
+        showListGitHub = gitHub
+    )
 
     fun initialState(initialState: Boolean) = GitHubState(
-        isLoading = initialState
+        isLoading = initialState,
+        showListGitHub = showListGitHub
     )
 }

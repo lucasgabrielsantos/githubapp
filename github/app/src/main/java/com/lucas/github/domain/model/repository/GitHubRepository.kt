@@ -7,7 +7,7 @@ interface GitHubRepository {
 
     fun getListGitHubRepositories(
         query: String,
-        page: Int,
-        sort: String
+        sort: String,
+        page: Int
     ): Flow<GitHub>
 }
