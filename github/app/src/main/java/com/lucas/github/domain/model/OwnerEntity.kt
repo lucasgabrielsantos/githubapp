@@ -1,22 +1,13 @@
 package com.lucas.github.domain.model
 
 data class OwnerEntity(
-    val gistsUrl: String = "",
     val reposUrl: String = "",
     val followingUrl: String = "",
     val starredUrl: String = "",
-    val login: String = "",
-    val type: String = "",
     val followersUrl: String = "",
     val url: String = "",
+    val login : String = "",
     val subscriptionsUrl: String = "",
-    val receivedEventsUrl: String = "",
-    val avatarUrl: String = "",
-    val eventsUrl: String = "",
-    val htmlUrl: String = "",
-    val siteAdmin: Boolean = false,
+    val avatarUrl: String?,
     val id: Int = 0,
-    val gravatarId: String = "",
-    val nodeId: String = "",
-    val organizationsUrl: String = ""
 )

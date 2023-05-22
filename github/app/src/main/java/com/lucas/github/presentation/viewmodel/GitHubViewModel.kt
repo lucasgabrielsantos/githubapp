@@ -31,13 +31,13 @@ class GitHubViewModel(
 
     fun getListGitHub() {
         viewModelScope.launch {
-            useCase.getListGitHubRepositories()
+            useCase()
                 .flowOn(dispatcher)
                 .onStart { _uiState.update { it.copy(isLoading = true) } }
                 .catch { emitShowError(it) }
                 .onCompletion { _uiState.update { it.copy(isLoading = false) } }
                 .collect { response ->
-                    _uiState.update { it.showListGitHub(response) }
+                    _uiState.update { state.value.showListGitHub(response) }
                 }
         }
     }

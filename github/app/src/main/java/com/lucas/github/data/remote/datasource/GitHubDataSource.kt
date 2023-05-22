@@ -4,5 +4,5 @@ import com.lucas.github.domain.model.GitHub
 import kotlinx.coroutines.flow.Flow
 
 interface GitHubDataSource {
-    fun getListGitHubPopular(): Flow<GitHub>
+    suspend fun getListGitHubPopular(): Flow<GitHub>
 }

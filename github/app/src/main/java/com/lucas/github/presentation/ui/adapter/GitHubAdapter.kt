@@ -38,7 +38,7 @@ class GitHubAdapter : ListAdapter<ItemsEntity, GitHubAdapter.GitHubViewHolder>(D
                 user.text = data.owner.login
                 forks.text = data.forksCount.toString()
                 starsCount.text = data.stargazersCount.toString()
-                acount.loadUrl(data.owner.avatarUrl)
+                account.loadUrl(data.owner.avatarUrl)
                 //     itemView.setOnClickListener { listener.clickListener(item)}
             }
         }

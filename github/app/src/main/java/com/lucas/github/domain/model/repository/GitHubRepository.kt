@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GitHubRepository {
 
-    fun getListGitHubRepositories(): Flow<GitHub>
+    suspend fun getListGitHubRepositories(): Flow<GitHub>
 }

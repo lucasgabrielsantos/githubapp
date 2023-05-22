@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 class GetListGitHubUseCase(private val repository: GitHubRepository) {
 
-    fun getListGitHubRepositories(): Flow<GitHub> = repository.getListGitHubRepositories()
+     suspend operator fun invoke(): Flow<GitHub> = repository.getListGitHubRepositories()
 
 }

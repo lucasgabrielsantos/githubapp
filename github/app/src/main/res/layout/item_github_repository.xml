@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxWidth="200dp"
-        android:maxLines="2"
+        android:maxLines="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repositoryName"
         tools:text="Descrição" />
@@ -81,16 +81,14 @@
         tools:text="0" />
 
     <ImageView
-        android:id="@+id/acount"
-        android:layout_width="@dimen/dimen_48"
-        android:layout_height="@dimen/dimen_48"
-        android:layout_marginRight="@dimen/dimen_28"
+        android:id="@+id/account"
+        android:layout_width="@dimen/dimen_100"
+        android:layout_height="@dimen/dimen_100"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_user"
-        app:layout_constraintBottom_toTopOf="@+id/user"
+        app:layout_constraintBottom_toBottomOf="@+id/user"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toTopOf="@+id/repositoryName"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -99,13 +97,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="100dp"
-        app:layout_constraintEnd_toEndOf="@+id/acount"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="@+id/acount"
-        app:layout_constraintTop_toTopOf="@+id/starsCount"
+        android:layout_marginBottom="@dimen/dimen_8"
+        app:layout_constraintStart_toStartOf="@+id/branch"
+        app:layout_constraintTop_toBottomOf="@+id/branch"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         tools:text="usuário" />
-
-
 
     <View
         android:id="@+id/view"
@@ -113,7 +109,7 @@
         android:layout_marginTop="@dimen/dimen_20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/branch"
-        app:layout_constraintTop_toBottomOf="@+id/branch" />
+        app:layout_constraintTop_toBottomOf="@+id/user" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
