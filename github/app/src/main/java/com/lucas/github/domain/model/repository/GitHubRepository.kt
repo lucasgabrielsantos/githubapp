@@ -5,8 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GitHubRepository {
 
-    fun getListGitHubRepositories(
-        query: String,
-        sort: String
-    ): Flow<GitHub>
+    fun getListGitHubRepositories(): Flow<GitHub>
 }

@@ -11,9 +11,9 @@ import kotlinx.coroutines.flow.flow
 
 class GitHubDataSourceImpl(private val api: GitHubApi) : GitHubDataSource {
 
-    override fun getListGitHubPopular(query: String, order: String): Flow<GitHub> =
+    override fun getListGitHubPopular(): Flow<GitHub> =
         flow {
-            emit(api.searchRepositories(query, order).toDomain())
+            emit(api.searchRepositories().toDomain())
         }
 
     private fun GitHubResponse.toDomain() = GitHub(

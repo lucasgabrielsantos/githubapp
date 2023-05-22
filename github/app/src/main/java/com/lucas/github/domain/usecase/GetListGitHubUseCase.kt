@@ -4,12 +4,9 @@ import com.lucas.github.domain.model.GitHub
 import com.lucas.github.domain.model.repository.GitHubRepository
 import kotlinx.coroutines.flow.Flow
 
-private const val LANGUAGE_QUERY = "language:Java"
-private const val SORT_ORDER = "stars"
 
 class GetListGitHubUseCase(private val repository: GitHubRepository) {
 
-    fun getListGitHubRepositories(): Flow<GitHub> {
-        return repository.getListGitHubRepositories(LANGUAGE_QUERY, SORT_ORDER)
-    }
+    fun getListGitHubRepositories(): Flow<GitHub> = repository.getListGitHubRepositories()
+
 }

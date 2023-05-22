@@ -6,11 +6,6 @@ import com.lucas.github.domain.model.repository.GitHubRepository
 import kotlinx.coroutines.flow.Flow
 
 class GitHubRepositoryImpl(val datasource: GitHubDataSource) : GitHubRepository {
+    override fun getListGitHubRepositories(): Flow<GitHub> = datasource.getListGitHubPopular()
 
-    override fun getListGitHubRepositories(
-        query: String,
-        sort: String
-    ): Flow<GitHub> {
-        return datasource.getListGitHubPopular(query, sort)
-    }
 }
