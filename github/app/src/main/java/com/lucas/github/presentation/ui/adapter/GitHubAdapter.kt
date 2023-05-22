@@ -45,10 +45,10 @@ class GitHubAdapter : ListAdapter<ItemsEntity, GitHubAdapter.GitHubViewHolder>(D
 
         class DiffCallback : DiffUtil.ItemCallback<ItemsEntity>() {
             override fun areItemsTheSame(oldItem: ItemsEntity, newItem: ItemsEntity) =
-                oldItem.id == newItem.id
+                oldItem == newItem
 
             override fun areContentsTheSame(oldItem: ItemsEntity, newItem: ItemsEntity) =
-                oldItem.id == newItem.id
+                oldItem == newItem
         }
     }
 }

@@ -12,7 +12,6 @@ data class GitHubState(
     )
 
     fun initialState(initialState: Boolean) = GitHubState(
-        isLoading = initialState,
-        showListGitHub = showListGitHub
+        isLoading = initialState
     )
 }

@@ -6,8 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 private const val LANGUAGE_QUERY = "language:Java"
 private const val SORT_ORDER = "stars"
-private const val FIRST_PAGE_INDEX = 1
-////https://api.github.com/search/repositories?q=language:Java&sort=stars&
 
 class GetListGitHubUseCase(private val repository: GitHubRepository) {
 
