@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lucas.github.databinding.ActivityListRepositoryBinding
 import com.lucas.github.domain.model.ItemsEntity
@@ -38,7 +39,7 @@ class GitHubRepositoriesActivity : AppCompatActivity() {
         adapter = GitHubAdapter()
         recyclerView = binding.rvRepositories
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun onPullClicked() {

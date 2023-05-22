@@ -32,9 +32,9 @@ class GitHubViewModel(
     fun getListGitHub() {
         viewModelScope.launch {
             useCase.getListGitHubRepositories()
-                .onStart { _uiState.update { it.copy(isLoading = false) } }
-                .catch { emitShowError(it) }
                 .flowOn(dispatcher)
+                .onStart { _uiState.update { it.copy(isLoading = true) } }
+                .catch { emitShowError(it) }
                 .onCompletion { _uiState.update { it.copy(isLoading = false) } }
                 .collect { response ->
                     _uiState.update { it.showListGitHub(response) }
