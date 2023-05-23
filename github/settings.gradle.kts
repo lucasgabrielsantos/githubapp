@@ -13,7 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "github"
-include ':app'
-include ':app:data'
-include ':app:presentation'
-include ':app:domain'
+include("app", "app:data", ":app:presentation", ":app:domain")

@@ -2,6 +2,7 @@ package com.lucas.github.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.lucas.github.domain.model.GitHub
 import com.lucas.github.domain.usecase.GetListGitHubUseCase
 import com.lucas.github.presentation.viewmodel.GitHubEvent.ShowError
 import kotlinx.coroutines.CoroutineDispatcher
@@ -37,10 +38,14 @@ class GitHubViewModel(
                 .onCompletion { emitStateLoading(false) }
                 .flowOn(dispatcher)
                 .collect { response ->
-                    _uiState.update { currentState ->
-                        currentState.copy(showListGitHub = response)
-                    }
+                    emitStateSuccess(response)
                 }
+        }
+    }
+
+    private fun emitStateSuccess(gitHub: GitHub) {
+        _uiState.update { currentState ->
+            currentState.copy(showListGitHub = gitHub)
         }
     }
 

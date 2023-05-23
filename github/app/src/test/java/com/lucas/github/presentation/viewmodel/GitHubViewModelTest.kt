@@ -33,13 +33,6 @@ class GitHubViewModelTest {
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
     private lateinit var viewModel: GitHubViewModel
 
-    var state = MutableStateFlow(GitHubState())
-        private set
-
-    var action = MutableStateFlow<GitHubEvent>(GitHubEvent.DefaultTest)
-        private set
-
-
     @Before
     fun setup() {
         Dispatchers.setMain(dispatcher)
@@ -66,8 +59,7 @@ class GitHubViewModelTest {
             // Then
             viewModel.state.test {
                 val currentState = expectItem()
-                assertEquals(currentState.showListGitHub, state.value)
-                assertEquals(expectedList, currentState.showListGitHub)
+                assertEquals(expectedList, viewModel.state.value.showListGitHub)
                 assertFalse(currentState.isLoading)
                 expectComplete()
             }
