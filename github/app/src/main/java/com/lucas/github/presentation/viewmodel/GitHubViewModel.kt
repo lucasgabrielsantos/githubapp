@@ -32,23 +32,27 @@ class GitHubViewModel(
     fun getListGitHub() {
         viewModelScope.launch {
             useCase()
-                .flowOn(dispatcher)
-                .onStart { _uiState.update { it.copy(isLoading = true) } }
+                .onStart { emitStateLoading(true) }
                 .catch { emitShowError(it) }
-                .onCompletion { _uiState.update { it.copy(isLoading = false) } }
+                .onCompletion { emitStateLoading(false) }
+                .flowOn(dispatcher)
                 .collect { response ->
-                    _uiState.update { state.value.showListGitHub(response) }
+                    _uiState.update { currentState ->
+                        currentState.copy(showListGitHub = response)
+                    }
                 }
         }
     }
 
-    private fun emitShowError(throwable: Throwable){
-        viewModelScope.launch {
-            _event.emit(ShowError(throwable))
-        }
+    private fun emitShowError(throwable: Throwable) = viewModelScope.launch {
+        _event.emit(ShowError(throwable = throwable))
+    }
+
+    private fun emitStateLoading(isLoading: Boolean) = _uiState.update {
+        it.copy(isLoading = isLoading)
     }
 
     private fun onClickRepository() {
-       // event.collect()  }
+        // event.collect()  }
     }
 }
