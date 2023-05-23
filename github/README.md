@@ -13,14 +13,14 @@ O objetivo deste projeto é aplicar alguns conceitos e tecnologias atuais no des
 ✨ Android Jetpack Components </br>
 ✨ Consumo de API (Flow/Coroutines + Retrofit) </br>
 ✨ Testes unitários (Mockk) </br>
-✨ Testes de UI (Espresso) </br>
+✨ Testes de UI (Espresso) WIP </br>
 ✨ SOLID </br>
 ✨ Conceitos de Clean Architecture </br>
+✨ Gradle Kts </br>
 
 
 ## Proximas features
-✨ Gradle Kts </br>
 ✨ Modularização </br>
 ✨ Tratamento de erros </br>
-✨ CI Bitrise </br>
-✨ Ktlint e Detekt </br>
+✨ CI Bitrise WIP</br>
+✨ Ktlint e Detekt WIP </br>
