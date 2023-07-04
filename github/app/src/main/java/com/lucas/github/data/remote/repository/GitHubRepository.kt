@@ -1,4 +1,4 @@
-package com.lucas.github.domain.model.repository
+package com.lucas.github.data.remote.repository
 
 import com.lucas.github.domain.model.GitHub
 import kotlinx.coroutines.flow.Flow

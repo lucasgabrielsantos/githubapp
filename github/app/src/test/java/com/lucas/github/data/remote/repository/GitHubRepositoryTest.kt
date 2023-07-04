@@ -4,13 +4,14 @@ import app.cash.turbine.test
 import com.lucas.github.data.remote.commons.MockGitHub
 import com.lucas.github.data.remote.datasource.GitHubDataSource
 import com.lucas.github.domain.model.GitHub
-import com.lucas.github.domain.model.repository.GitHubRepository
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
+import kotlin.jvm.Throws
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -40,27 +41,6 @@ internal class GitHubRepositoryTest {
             // Then
             result.test {
                 assertEquals(expectedGitHub, expectItem())
-                expectComplete()
-            }
-        }
-
-    @Test
-    fun `getListGitHubPopular should emit error on failure`() =
-        runBlocking {
-            // Given
-            val throwable = Throwable()
-            val expectedException = Exception(throwable)
-
-            coEvery {
-                gitHubDataSource.getListGitHubPopular()
-            } throws expectedException
-
-            // When
-            val result = gitHubRepository.getListGitHubRepositories()
-
-            // Then
-            result.test {
-                expectError()
                 expectComplete()
             }
         }

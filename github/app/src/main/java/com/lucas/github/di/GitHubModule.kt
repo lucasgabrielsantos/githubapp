@@ -3,10 +3,9 @@ package com.lucas.github.di
 import com.lucas.github.data.remote.datasource.GitHubDataSource
 import com.lucas.github.data.remote.datasource.GitHubDataSourceImpl
 import com.lucas.github.data.remote.repository.GitHubRepositoryImpl
-import com.lucas.github.data.remote.service.Client
 import com.lucas.github.data.remote.service.Client.getService
 import com.lucas.github.data.remote.service.GitHubApi
-import com.lucas.github.domain.model.repository.GitHubRepository
+import com.lucas.github.data.remote.repository.GitHubRepository
 import com.lucas.github.domain.usecase.GetListGitHubUseCase
 import com.lucas.github.presentation.viewmodel.GitHubViewModel
 import kotlinx.coroutines.Dispatchers

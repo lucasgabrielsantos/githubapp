@@ -1,7 +1,7 @@
 package com.lucas.github.domain.usecase
 
 import com.lucas.github.domain.model.GitHub
-import com.lucas.github.domain.model.repository.GitHubRepository
+import com.lucas.github.data.remote.repository.GitHubRepository
 import kotlinx.coroutines.flow.Flow
 
 
